@@ -23,6 +23,7 @@
 		AA4DFC3C2689250E00C83F76 /* DetailScreenMusician.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DFC3B2689250E00C83F76 /* DetailScreenMusician.swift */; };
 		AA4DFC3E2689254500C83F76 /* DetailMusicianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DFC3D2689254500C83F76 /* DetailMusicianViewController.swift */; };
 		AAECFB5A268CB0D900DBC2A1 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECFB59268CB0D900DBC2A1 /* Constraints.swift */; };
+		AAECFB5E268CE92C00DBC2A1 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECFB5D268CE92C00DBC2A1 /* HelperProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		AA4DFC3B2689250E00C83F76 /* DetailScreenMusician.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenMusician.swift; sourceTree = "<group>"; };
 		AA4DFC3D2689254500C83F76 /* DetailMusicianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMusicianViewController.swift; sourceTree = "<group>"; };
 		AAECFB59268CB0D900DBC2A1 /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		AAECFB5D268CE92C00DBC2A1 /* HelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,9 +286,26 @@
 		AAECFB58268CB0C800DBC2A1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AAECFB59268CB0D900DBC2A1 /* Constraints.swift */,
+				AAECFB5C268CE8F800DBC2A1 /* HelpersProtocols */,
+				AAECFB5B268CE8E700DBC2A1 /* ConstraintsLib */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AAECFB5B268CE8E700DBC2A1 /* ConstraintsLib */ = {
+			isa = PBXGroup;
+			children = (
+				AAECFB59268CB0D900DBC2A1 /* Constraints.swift */,
+			);
+			path = ConstraintsLib;
+			sourceTree = "<group>";
+		};
+		AAECFB5C268CE8F800DBC2A1 /* HelpersProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				AAECFB5D268CE92C00DBC2A1 /* HelperProtocol.swift */,
+			);
+			path = HelpersProtocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +391,7 @@
 				AA4DFC3C2689250E00C83F76 /* DetailScreenMusician.swift in Sources */,
 				AA17F3C72687609800D4862F /* CategoriesScreen.swift in Sources */,
 				AA4DFC372688CAD400C83F76 /* DetailBandViewController.swift in Sources */,
+				AAECFB5E268CE92C00DBC2A1 /* HelperProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,8 +10,9 @@ import UIKit
 protocol RegisterScreenDelegate: AnyObject {
     func dismiss()
 }
-class RegisterScreen: UIView, CodeView {
 
+class RegisterScreen: UIView, CodeView {
+    
     // MARK: - Properties
     weak var delegate: RegisterScreenDelegate?
     
@@ -25,7 +26,6 @@ class RegisterScreen: UIView, CodeView {
         img.clipsToBounds = true
         return img
     }()
-    
     
     lazy var logoImageView: UIImageView = {
         let imgLogo = UIImageView()
@@ -46,11 +46,10 @@ class RegisterScreen: UIView, CodeView {
         tfEmail.placeholder = "Email"
         tfEmail.textAlignment = .center
         tfEmail.font = UIFont.systemFont(ofSize: 14)
-        tfEmail.keyboardType = .numberPad
+        tfEmail.keyboardType = .default
         tfEmail.borderStyle = .roundedRect
         return tfEmail
     }()
-    
     
     lazy var textFieldPassword: UITextField = {
         let tfPassword = UITextField()
@@ -58,7 +57,7 @@ class RegisterScreen: UIView, CodeView {
         tfPassword.placeholder = "Password"
         tfPassword.textAlignment = .center
         tfPassword.font = UIFont.systemFont(ofSize: 14)
-        tfPassword.keyboardType = .numberPad
+        tfPassword.keyboardType = .default
         tfPassword.borderStyle = .roundedRect
         return tfPassword
     }()
@@ -69,11 +68,10 @@ class RegisterScreen: UIView, CodeView {
         tfConfiPassword.placeholder = "Confirm Password"
         tfConfiPassword.textAlignment = .center
         tfConfiPassword.font = UIFont.systemFont(ofSize: 14)
-        tfConfiPassword.keyboardType = .numberPad
+        tfConfiPassword.keyboardType = .default
         tfConfiPassword.borderStyle = .roundedRect
         return tfConfiPassword
     }()
-    
     
     lazy var registerButton: UIButton = {
         let register = UIButton()
@@ -92,7 +90,6 @@ class RegisterScreen: UIView, CodeView {
         self.delegate?.dismiss()
     }
     
-    
     // MARK: - Super Methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -110,48 +107,56 @@ class RegisterScreen: UIView, CodeView {
         
     }
     
-    
     func setupConstraints() {
-        NSLayoutConstraint.activate([
         
-            // MARK: - Constraints Text Field Email
-            self.textFieldEmail.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50),
-            self.textFieldEmail.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 24),
-            self.textFieldEmail.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -24),
-            
-            // MARK: - Constraints Text Field Password
-            self.textFieldPassword.topAnchor.constraint(equalTo: self.textFieldEmail.bottomAnchor, constant: 6),
-            self.textFieldPassword.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 24),
-            self.textFieldPassword.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -24),
-            
-            // MARK: - Constraint Text Field Confirm Password
-            self.textFieldConfirmPassword.topAnchor.constraint(equalTo: self.textFieldPassword.bottomAnchor, constant: 6),
-            self.textFieldConfirmPassword.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 24),
-            self.textFieldConfirmPassword.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -24),
-            
-            // MARK: - Constraints Register Button
-            self.registerButton.topAnchor.constraint(equalTo: self.textFieldConfirmPassword.bottomAnchor),
-            self.registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            self.logoImageView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            self.logoImageView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -140),
-            self.logoImageView.heightAnchor.constraint(equalToConstant: 100),
-            self.logoImageView.widthAnchor.constraint(equalToConstant: 100),
-            
-            // MARK: - Constraints Image Background
-            self.bgImage.topAnchor.constraint(equalTo: self.topAnchor),
-            self.bgImage.leftAnchor.constraint(equalTo: self.leftAnchor),
-            self.bgImage.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.bgImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-        ])
+        // MARK: - Constraints Text Field Email
+        textFieldEmail
+            .centerVertical(to: self, constant: Constant.verticalTextFielEmail)
+            .leadingToSuperview(Constant.leading, toSafeArea: true)
+            .trailingToSuperview(Constant.trailing, toSafeArea: true)
+        
+        
+        // MARK: - Constraints Text Field Password
+        textFieldPassword
+            .topToBottom(of: textFieldEmail, margin: Constant.margin)
+            .leadingToSuperview(Constant.leading, toSafeArea: true)
+            .trailingToSuperview(Constant.trailing, toSafeArea: true)
+        
+        
+        // MARK: - Constraint Text Field Confirm Password
+        textFieldConfirmPassword
+            .topToBottom(of: textFieldPassword, margin: Constant.margin)
+            .leadingToSuperview(Constant.leading, toSafeArea: true)
+            .trailingToSuperview(Constant.trailing, toSafeArea: true)
+        
+        
+        // MARK: - Constraints Register Button
+        registerButton
+            .topToBottom(of: textFieldConfirmPassword, margin: Constant.margin)
+            .centerHorizontal(to: textFieldConfirmPassword)
+        
+        
+        // MARK: - Constraints Logo Image View
+        logoImageView
+            .centerHorizontal(to: self)
+            .centerVertical(to: self, constant: Constant.centerVerticalLogoImageView)
+            .heightTo(Constant.heigth)
+            .widthTo(Constant.width)
+        
+        
+        // MARK: - Constraints Image Background
+        bgImage
+            .topToTop(of: self)
+            .leadingToLeading(of: self)
+            .trailingToTrailing(of: self)
+            .bottomToBottom(of: self)
+        
     }
     
     
     func extraSetupConfiguration() {
         
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -12,6 +12,20 @@ protocol LoginScreenDelegate: AnyObject {
     func registerButton()
 }
 
+public enum Constants {
+    // MARK: Aspect Ratio
+    public static let categoryImageAspectRatio: CGFloat = 1
+    public static let productImageAspectRatio: CGFloat = 4 / 3
+    public static let brandHeaderAspectRatio: CGFloat = 16 / 6
+    // MARK: Sizes
+    public static let categoryImageHeight: CGFloat = 72
+    public static let brandHeaderWidth = CGFloat(brandHeaderAspectRatio * categoryImageHeight).rounded()
+    public static let listImageHeight: CGFloat = 92
+    public static let listImageWidth = CGFloat(productImageAspectRatio * listImageHeight).rounded()
+    public static let detailImageHeight: CGFloat = 246
+    public static let detailImageWidth = CGFloat(productImageAspectRatio * detailImageHeight).rounded()
+}
+
 class LoginScreen: UIView, CodeView {
     
     // MARK: - Properties
@@ -147,41 +161,41 @@ class LoginScreen: UIView, CodeView {
         self.addSubview(registerButton)
     }
     
-    
+
     func setupConstraints() {
         
         // MARK: - Constraints Text Field Email
         textFieldEmail
-            .centerVertical(to: self, constant: -50)
-            .leadingToSuperview(24, toSafeArea: true)
-            .trailingToSuperview(24, toSafeArea: true)
+            .centerVertical(to: self, constant: Constant.verticalTextFielEmail)
+            .leadingToSuperview(Constant.leading, toSafeArea: true)
+            .trailingToSuperview(Constant.trailing, toSafeArea: true)
         
         
         // MARK: - Constraints Text Field Password
         textFieldPassword
-            .topToBottom(of: textFieldEmail, margin: 6)
-            .leadingToSuperview(24, toSafeArea: true)
-            .trailingToSuperview(24, toSafeArea: true)
+            .topToBottom(of: textFieldEmail, margin: Constant.margin)
+            .leadingToSuperview(Constant.leading, toSafeArea: true)
+            .trailingToSuperview(Constant.trailing, toSafeArea: true)
         
         
         // MARK: - Constraints Login Button
         loginButton
-            .topToBottom(of: textFieldPassword, margin: 6)
+            .topToBottom(of: textFieldPassword, margin: Constant.margin)
             .centerHorizontal(to: textFieldPassword)
         
         
         // MARK: - Constraints Logo Image View
         registerButton
-            .topToBottom(of: loginButton, margin: -10)
+            .topToBottom(of: loginButton, margin: Constant.registerButtonMargin)
             .centerHorizontal(to: loginButton)
         
         
         // MARK: - Constraints Image Background
         logoImageView
             .centerHorizontal(to: self)
-            .centerVertical(to: self, constant: -140)
-            .heightTo(100)
-            .widthTo(100)
+            .centerVertical(to: self, constant: Constant.centerVerticalLogoImageView)
+            .heightTo(Constant.heigth)
+            .widthTo(Constant.width)
         
         
         // MARK: - Constraints Image Background
